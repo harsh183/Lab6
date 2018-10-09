@@ -216,4 +216,22 @@ public class Pokemon {
         return (opponent.hitPoints < 1);
     }
 
+    /**
+     * A special attack 'abstract' function that's only meant for inheriting.
+     *
+     * @param opponent the Pokemon to attack
+     * @param type The type of the pokemon
+     * @param specialAttackName The name of the special attack
+     * @param specProb The probabilty of special attack
+     * @return whether or not the game has ended
+     */
+    boolean specialAttack(final Pokemon opponent, final PokemonType type, final String specialAttackName, final double specProb) {
+        if (opponent.getHitPoints() > 0 || opponent.pokeType != type || specProb > Math.random()) {
+            System.out.println(name + "executes a speciality attack... " + specialAttackName + "!!!");
+            opponent.setHitPoints(0);
+            return true;
+        }
+        return false;
+    }
+
 }
